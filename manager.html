@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastLane Garage - Manager Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>FastLane Garage</h2>
+            <h3>Manager Dashboard</h3>
+        </div>
+
+        <!-- Stats Summary Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-title">Total Employees</div>
+                <div class="stat-value" id="statTotalEmployees">0</div>
+                <div class="stat-badge">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Pending Reports</div>
+                <div class="stat-value" id="statPendingReports">0</div>
+                <div class="stat-badge">Needs Review</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Total Approved</div>
+                <div class="stat-value" id="statApprovedReports">0</div>
+                <div class="stat-badge">This Month</div>
+            </div>
+        </div>
+
+        <!-- Manager Actions -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Management Tools</h3>
+            </div>
+            
+            <div class="manager-actions">
+                <button id="dashboardButton" class="btn btn-secondary">
+                    <i class="fas fa-tachometer-alt btn-icon"></i> View Employee Dashboard
+                </button>
+                <button id="logoutButton" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt btn-icon"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Add Employee Form -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3>Add New Employee</h3>
+            </div>
+            
+            <form id="addEmployeeForm">
+                <div class="form-group">
+                    <label for="employeeName">Employee Name</label>
+                    <input type="text" id="employeeName" placeholder="Enter employee full name" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle btn-icon"></i> Add Employee
+                </button>
+            </form>
+        </div>
+
+        <!-- Employee List -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Current Employees</h3>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Report Management -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Repair Reports Management</h3>
+            </div>
+            
+            <!-- Filter by Employee -->
+            <div class="filter-section">
+                <label for="employeeFilter">
+                    <i class="fas fa-filter"></i> Filter by Employee
+                </label>
+                <select id="employeeFilter">
+                    <option value="">All Employees</option>
+                    <!-- Employee options will be dynamically inserted here -->
+                </select>
+            </div>
+
+            <!-- Reports Table -->
+            <div class="table-container">
+                <table id="reportsTable">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Date</th>
+                            <th>Repairs</th>
+                            <th>Cost</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTable"></tbody>
+                </table>
+            </div>
+            
+            <div class="totals-inline">
+                <span>Total Reports: <strong id="totalReports">0</strong></span>
+                <span>Total Approved: <strong id="totalApproved">0</strong></span>
+                <span>Total Cost: <strong id="totalCost">₹0</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-bar">
+        <p>Designed and developed by <strong>Oscar Madrazo</strong>. All rights reserved © <strong>FastLane Garage</strong> 2025.</p>
+    </footer>
+
+    <!-- Firebase Auth and Manager JS -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="manager.js"></script>
+</body>
+</html>
